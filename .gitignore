@@ -1,0 +1,9 @@
+.idea
+*.properties
+*.yaml
+*.yml
+*.xml
+*.json
+*.log
+target/
+test/
