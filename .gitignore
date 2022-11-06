@@ -1,8 +1,0 @@
-.idea
-*.properties
-*.yaml
-*.yml
-*.xml
-*.json
-target/
-test/
