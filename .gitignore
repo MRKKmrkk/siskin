@@ -3,7 +3,7 @@
 *.yaml
 *.yml
 c3p0-config.xml
-log4j.xml
+log4j2.xml
 *.json
 *.log
 target/
