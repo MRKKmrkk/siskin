@@ -7,12 +7,17 @@ object SiskinConfig extends Logging{
 
   logger.info("create SiskinConfig")
 
+//  private val configHome: String = "/opt/software/siskin/conf/"
   logger.debug("load property siskin-redis.properties")
   private val redisProperties: SProperties = SProperties.createSProperties("siskin-redis.properties")
   logger.debug("load property siskin-kafka.properties")
   private val kafkaProperties: SProperties = SProperties.createSProperties("siskin-kafka.properties")
   logger.debug("load property siskin-core.properties")
   private val coreProperties: SProperties = SProperties.createSProperties("siskin-core.properties")
+
+  // kryo缓冲大小
+  val SERIALIZATION_BUFFER_MAX_SIZE: Int = coreProperties.getIntProperty("SERIALIZATION_BUFFER_MAX_SIZE")
+  logger.debug(f"load property SERIALIZATION_BUFFER_MAX_SIZE: $SERIALIZATION_BUFFER_MAX_SIZE")
 
   // redis连接地址
   val REDIS_HOST: String = redisProperties.getProperty("REDIS_HOST")

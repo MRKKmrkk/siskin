@@ -2,7 +2,8 @@
 *.properties
 *.yaml
 *.yml
-*.xml
+c3p0-config.xml
+log4j.xml
 *.json
 *.log
 target/
