@@ -2,8 +2,7 @@ package org.esni.siskin_core.source
 
 import org.apache.flink.configuration.Configuration
 import org.apache.flink.streaming.api.functions.source.{RichSourceFunction, SourceFunction}
-import org.esni.siskin_core.bean.{CurrentRule, FilterRule, IdentifiedRule}
-import org.esni.siskin_core.util.{DateUtil, JedisConnectionPoolUtil}
+import org.esni.siskin_core.util.{JedisConnectionPoolUtil, SerializationUtil, SiskinDBConnectionPoolUtil}
 import redis.clients.jedis.Jedis
 
 import scala.collection.JavaConversions._
@@ -39,6 +38,11 @@ class RedisHashSource[T](key: String, func: ((String, String)) => T) extends Ric
 
     isRunning = false
     jedis.close()
+    // todo: oom解决措施 - 回收连接池
+    JedisConnectionPoolUtil.close()
+    SiskinDBConnectionPoolUtil.close()
+    SerializationUtil.clear()
 
   }
+
 }

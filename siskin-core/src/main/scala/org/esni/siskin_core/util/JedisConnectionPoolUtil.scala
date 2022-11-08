@@ -33,4 +33,10 @@ object JedisConnectionPoolUtil {
 
   }
 
+  def close(): Unit = {
+
+    jedisPool.close()
+
+  }
+
 }

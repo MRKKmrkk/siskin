@@ -85,4 +85,13 @@ public class SiskinDBConnectionPoolUtil implements Serializable {
         }
     }
 
+    // 回收连接池
+    public static void close() {
+
+        if (ds != null) {
+            ds.close();
+        }
+
+    }
+
 }

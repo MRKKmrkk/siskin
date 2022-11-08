@@ -31,4 +31,10 @@ object SerializationUtil {
 
   }
 
+  def clear(): Unit = {
+
+    output.clear()
+
+  }
+
 }
