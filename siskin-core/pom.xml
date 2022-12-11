@@ -94,7 +94,7 @@
             <artifactId>flink-runtime-web_2.11</artifactId>
             <version>${flink.version}</version>
             <scope>compile</scope>
-        </dependency>it 
+        </dependency>
 
 
     </dependencies>
