@@ -8,3 +8,4 @@ log4j2.xml
 *.log
 target/
 test/
+*.iml
