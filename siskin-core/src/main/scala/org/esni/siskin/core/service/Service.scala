@@ -7,5 +7,6 @@ abstract class Service extends Logging {
 
   def setup()
 
+  //
   def closeup()
 }
