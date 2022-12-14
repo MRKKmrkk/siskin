@@ -1,4 +1,4 @@
-package org.esni.siskin_core.bean
+package org.esni.siskin.core.bean
 
 import scala.collection.mutable
 

@@ -13,7 +13,7 @@
         <Root level="trace">
             <AppenderRef ref="File"/>
         </Root>
-        <logger name="org.esni.siskin_core" level="trace" additivity="true">
+        <logger name="org.esni.siskin" level="trace" additivity="true">
             <appender-ref ref="Console"/>
         </logger>
     </Loggers>
