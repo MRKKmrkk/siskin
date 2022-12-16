@@ -3,7 +3,6 @@ package org.esni.siskin.core
 import org.apache.flink.streaming.api.scala.{DataStream, StreamExecutionEnvironment}
 import org.esni.siskin.core.conf.SiskinConf
 import org.esni.siskin.core.service.Service
-import org.esni.siskin.core.service.impl.DataSourceService
 import org.esni.siskin.core.source.function.DataSourceFunction
 import org.esni.siskin.core.util.ReflectUtil
 
