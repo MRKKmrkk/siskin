@@ -3,19 +3,35 @@ package org.esni.siskin.core.source.impl
 import org.apache.flink.streaming.api.scala.{DataStream, StreamExecutionEnvironment}
 import org.esni.siskin.core.source.DataSource
 
-class LocalFileDataSource extends DataSource{
-  override def start(env: StreamExecutionEnvironment): DataStream[String] = {
+import scala.io.{BufferedSource, Source}
 
-    val inputpath = "D:\\1\\gitproject\\siskin\\siskin-core\\src\\main\\resources\\testdata.txt"
-    val stream2 = env.readTextFile(inputpath)
-    stream2
+class LocalFileDataSource extends DataSource{
+
+  val inputpath = "src/main/resources/testdata.txt"
+  var lines: List[String] = _
+  var cur: Int = 0
+
+  override def collect(): String = {
+
+    if (cur >= lines.length) {
+      Thread.sleep(Long.MaxValue)
+    }
+
+    val ans = lines(cur)
+    cur += 1
+
+    ans
 
   }
 
-  override def collect(): String = ???
+  override def setup(): Unit = {
 
-  override def setup(): Unit = ???
+    val source = Source.fromFile(inputpath)
+    lines = source.getLines().toList
+    source.close()
 
-  override def close(): Unit = ???
+  }
+
+  override def close(): Unit = {}
 }
 

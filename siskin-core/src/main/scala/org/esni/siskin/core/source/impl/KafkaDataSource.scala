@@ -4,11 +4,11 @@ import org.esni.siskin.core.source.DataSource
 
 class KafkaDataSource extends DataSource {
 
-  override def start(env: StreamExecutionEnvironment): DataStream[String] = ???
 
   override def collect(): String = ???
 
   override def setup(): Unit = ???
 
   override def close(): Unit = ???
+
 }

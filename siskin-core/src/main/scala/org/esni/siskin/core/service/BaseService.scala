@@ -4,8 +4,8 @@ import grizzled.slf4j.Logging
 
 trait BaseService extends Logging {
 
-  def setup
+  def setup()
 
-  def close
+  def close()
 
 }
