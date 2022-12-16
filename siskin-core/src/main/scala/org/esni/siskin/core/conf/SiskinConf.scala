@@ -12,4 +12,6 @@ object SiskinConf {
   // Jar包存放路径, 此路径不能包含中文
   val LIB_PATH: String = siskinCore.getString("LIB_PATH", Paths.get(System.getenv("SISKIN_HOME"), "lib").toString)
 
+  // dataSource全类名
+  var DATA_SOURCE_FCN:String = siskinCore.getString("DATA_SOURCE_FCN", "org.esni.siskin.core.source.impl.LocalFileDataSource")
 }
