@@ -10,9 +10,12 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.nio.file.NotDirectoryException;
+import java.nio.file.Paths;
 import java.util.Objects;
 
 public class ReflectUtil {
+
+    private static final SiskinConf conf = SiskinConf.getOrCreate();
 
     private static void curLoadJar(File file, Method method, URLClassLoader loader) throws MalformedURLException, InvocationTargetException, IllegalAccessException {
 
@@ -69,7 +72,7 @@ public class ReflectUtil {
 
     public static <T> T reflectAndReload(String className) throws ClassNotFoundException, IllegalAccessException, InstantiationException, InvocationTargetException, FileNotFoundException, NotDirectoryException, MalformedURLException, NoSuchMethodException {
 
-        loadJar(SiskinConf.LIB_PATH());
+        loadJar(conf.getString("lib.path", Paths.get(System.getenv("SISKIN_HOME"), "lib").toString()));
         return reflect(className);
 
     }
