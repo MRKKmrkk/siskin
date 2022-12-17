@@ -23,7 +23,7 @@ class BaseConf(confName: String) extends Logging{
     if (DEBUG) {
       source = Thread.currentThread()
         .getContextClassLoader
-        .getResourceAsStream("siskin-core.properties")
+        .getResourceAsStream(f"${confName}.properties")
     }
     else {
       path = Paths.get(System.getenv("SISKIN_HOME"), "conf", f"${confName}.properties").toString

@@ -6,7 +6,12 @@ object Demo {
 
   def main(args: Array[String]): Unit = {
 
-    println(SiskinConf.TEST)
+    val conf = SiskinConf()
+    conf.loadPropertiesToZookeeper()
+
+    conf.getString("lib.path", ".")
+
+    conf.close()
 
   }
 
