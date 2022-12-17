@@ -9,3 +9,4 @@ log4j2.xml
 target/
 test/
 *.iml
+exp/

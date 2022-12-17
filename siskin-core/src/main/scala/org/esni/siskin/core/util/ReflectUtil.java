@@ -31,6 +31,7 @@ public class ReflectUtil {
      * 将指定目录下的jar包动态载入当前jvm进程
      */
     public static void loadJar(String path) throws FileNotFoundException, NotDirectoryException, NoSuchMethodException, MalformedURLException, InvocationTargetException, IllegalAccessException {
+
         File file = new File(path);
 
         if (!file.exists()) {
@@ -49,6 +50,7 @@ public class ReflectUtil {
         curLoadJar(file, method, loader);
 
         method.setAccessible(accessible);
+
     }
 
     /**
@@ -60,12 +62,23 @@ public class ReflectUtil {
      * @return 实例化后的对象
      */
     public static <T> T reflect(String className) throws ClassNotFoundException, IllegalAccessException, InstantiationException {
+
         return (T) Class.forName(className).newInstance();
+
     }
 
     public static <T> T reflectAndReload(String className) throws ClassNotFoundException, IllegalAccessException, InstantiationException, InvocationTargetException, FileNotFoundException, NotDirectoryException, MalformedURLException, NoSuchMethodException {
+
         loadJar(SiskinConf.LIB_PATH());
         return reflect(className);
+
+    }
+
+    public static <D, T> D getFieldFromScalaCastClass(T data, String fieldName) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+
+        Class<?> cls = data.getClass();
+        return (D) cls.getDeclaredMethod(fieldName).invoke(data);
+
     }
 
 }
