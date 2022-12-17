@@ -21,7 +21,13 @@ class SiskinConf(private val client: CuratorFramework, private val zkConf: BaseC
 
 object SiskinConf {
 
-  def apply(): SiskinConf = {
+  private var SISKIN_CONF: SiskinConf = _
+
+  def getOrCreate(): SiskinConf = {
+
+    if (SiskinConf != null) {
+      return SISKIN_CONF
+    }
 
     val conf = new BaseConf("zookeeper")
 
@@ -35,9 +41,10 @@ object SiskinConf {
           1000, 3
         )
       )
-
     client.start()
-    new SiskinConf(client, conf)
+
+    SISKIN_CONF = new SiskinConf(client, conf)
+    SISKIN_CONF
 
   }
 
